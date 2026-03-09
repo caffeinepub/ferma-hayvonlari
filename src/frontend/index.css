@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Bricolage Grotesque - Display */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque[opsz,wdth,wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* General Sans - Body */
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Farm theme: warm earthy palette */
+    /* Background: warm cream/parchment */
+    --background: 0.96 0.018 85;
+    /* Foreground: deep rich soil */
+    --foreground: 0.22 0.04 55;
+
+    /* Card: warm white with slight warmth */
+    --card: 0.99 0.008 80;
+    --card-foreground: 0.22 0.04 55;
+
+    /* Popover */
+    --popover: 0.99 0.008 80;
+    --popover-foreground: 0.22 0.04 55;
+
+    /* Primary: deep forest green */
+    --primary: 0.38 0.12 145;
+    --primary-foreground: 0.97 0.01 90;
+
+    /* Secondary: muted sage green */
+    --secondary: 0.88 0.04 130;
+    --secondary-foreground: 0.3 0.08 145;
+
+    /* Muted: warm tan */
+    --muted: 0.92 0.022 80;
+    --muted-foreground: 0.52 0.04 60;
+
+    /* Accent: warm amber/hay gold */
+    --accent: 0.85 0.12 80;
+    --accent-foreground: 0.22 0.06 55;
+
+    /* Destructive: barn red */
+    --destructive: 0.54 0.2 28;
+    --destructive-foreground: 0.97 0.01 90;
+
+    /* Success: fresh green */
+    --success: 0.58 0.18 145;
+    --success-foreground: 0.97 0.01 90;
+
+    /* Border: warm earth */
+    --border: 0.85 0.03 75;
+    --input: 0.88 0.025 78;
+    --ring: 0.38 0.12 145;
+
+    /* Chart */
+    --chart-1: 0.55 0.18 145;
+    --chart-2: 0.7 0.15 80;
+    --chart-3: 0.54 0.2 28;
+    --chart-4: 0.65 0.12 55;
+    --chart-5: 0.5 0.14 170;
+
+    --sidebar: 0.94 0.02 80;
+    --sidebar-foreground: 0.22 0.04 55;
+    --sidebar-primary: 0.38 0.12 145;
+    --sidebar-primary-foreground: 0.97 0.01 90;
+    --sidebar-accent: 0.88 0.04 130;
+    --sidebar-accent-foreground: 0.3 0.08 145;
+    --sidebar-border: 0.85 0.03 75;
+    --sidebar-ring: 0.38 0.12 145;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, oklch(0.88 0.04 130 / 0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, oklch(0.85 0.06 80 / 0.25) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 0%, oklch(0.90 0.03 110 / 0.2) 0%, transparent 40%);
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .farm-grain {
+    position: relative;
+  }
+
+  .farm-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    border-radius: inherit;
+    z-index: 0;
+  }
+
+  .status-active {
+    @apply bg-green-100 text-green-800 border-green-300;
+  }
+
+  .status-removed {
+    @apply bg-stone-100 text-stone-600 border-stone-300;
+  }
+}
